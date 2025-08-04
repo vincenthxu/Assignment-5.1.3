@@ -9,7 +9,8 @@
                 int[] ints = new int[args.Length];
                 for(int i = 0; i < args.Length; i++)
                 {
-                    ints[i] = Convert.ToInt32(args[i]);
+                    if (!int.TryParse(args[i], out ints[i]))
+                        throw new ArgumentException("Argument must be a valid integer");
                 }
                 Console.WriteLine(IsIndividuallyUnique(ints));
             }
